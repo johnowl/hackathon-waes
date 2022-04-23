@@ -10,13 +10,25 @@ import java.time.LocalDate
 
 data class User(val preferences: List<String>, val location: String, val balance: BigDecimal)
 data class City(val name: String, val location: String, val characteristics: List<String>, val nearestAirport: String)
-data class Flight(val number: String, val from: String, val to: String, val price: BigDecimal)
+data class Flight(val number: String, val from: String, val to: String, val price: BigDecimal, var seatClass: String)
 
 const val BEACH = "beach"
 const val HISTORICAL = "historical"
 const val NIGHT_LIFE = "night_life"
 const val COUNTRY_SIDE = "country_side"
 const val WINE = "wine"
+const val FOOTBALL = "football"
+const val HOLIDAY = "holiday"
+const val LANDASCAPE = "landscape"
+const val MUSEUM = "museum"
+const val NATURISM = "naturism"
+const val BARBECUE = "barbecue"
+const val SPECIAL_CUISINE = "special_cuisine"
+const val TANGO = "tango"
+
+const val ECONOMY = "economy"
+const val EXECUTIVE = "executive"
+const val FIRST_CLASS = "first_class"
 
 fun main() {
 
@@ -29,10 +41,14 @@ fun main() {
     )
 
     val cities = setOf(
-        City("Paris", "FRANCE", listOf(HISTORICAL, NIGHT_LIFE), "CDG"),
-        City("London", "ENGLAND", listOf(HISTORICAL, NIGHT_LIFE), "LHR"),
-        City("Ibiza", "SPAIN", listOf(BEACH, NIGHT_LIFE), "IBZ"),
+        City("Paris", "FRANCE", listOf(HISTORICAL, NIGHT_LIFE, MUSEUM, SPECIAL_CUISINE), "CDG"),
+        City("London", "ENGLAND", listOf(HISTORICAL, NIGHT_LIFE, MUSEUM, FOOTBALL), "LHR"),
+        City("Ibiza", "SPAIN", listOf(BEACH, NIGHT_LIFE, NATURISM), "IBZ"),
         City("Mallorca", "SPAIN", listOf(BEACH, NIGHT_LIFE), "PMI"),
+        City("Tokyo", "JAPAN", listOf(NIGHT_LIFE), "NRT"),
+        City("Sao Paulo", "BRAZIL", listOf(NIGHT_LIFE, BARBECUE, FOOTBALL), "GRU"),
+        City("Tokyo", "JAPAN", listOf(NIGHT_LIFE, SPECIAL_CUISINE), "NRT"),
+        City("Buenos Aires", "ARGENTINA", listOf(NIGHT_LIFE, SPECIAL_CUISINE, TANGO), "EZE"),
     )
 
     val flights = setOf(
@@ -40,6 +56,9 @@ fun main() {
         Flight("1235", "AMS", "LHR", BigDecimal(120)),
         Flight("1236", "AMS", "IBZ", BigDecimal(170)),
         Flight("1237", "AMS", "PMI", BigDecimal(300)),
+        Flight("1237", "AMS", "GRU", BigDecimal(800)),
+        Flight("1238", "AMS", "EZE", BigDecimal(900), ECONOMY),
+        Flight("1238", "AMS", "EZE", BigDecimal(900), EXECUTIVE),
     )
 
     val preference = BEACH
